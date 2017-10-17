@@ -3,7 +3,7 @@ package assignment_2;
 /**
  *
  * @author Taylor Johnson
- * date - 9/24/17
+ * date - 10/17/17
  */
 public class Movie {
     private String movieName;
