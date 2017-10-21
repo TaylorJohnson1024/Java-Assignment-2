@@ -11,7 +11,7 @@ package assignment_2;
  * 
  * Specific reference is Example_1
  */
-public class MovieList {
+public class MovieList implements Cloneable {
     private Movie[] movie;
     private int numOfMovies = 0;
     private int movieArrayIndex = 0;
@@ -358,5 +358,17 @@ public class MovieList {
      */
     public String getMovieListMovieFormat(int index) {
         return movie[index].getMovieFormat();
+    }
+    
+    
+    public MovieList clone() {	
+        try {
+            MovieList copy = (MovieList) super.clone();
+            copy.movie = movie.clone();
+            return copy;
+        } 
+        catch (CloneNotSupportedException e) {
+            throw new RuntimeException("This class does not implement Clonable");
+        }
     }
 }

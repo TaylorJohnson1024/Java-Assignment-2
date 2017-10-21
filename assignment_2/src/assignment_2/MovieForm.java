@@ -55,6 +55,8 @@ public class MovieForm extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        btnClone = new javax.swing.JButton();
+        btnCompare = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -259,6 +261,22 @@ public class MovieForm extends javax.swing.JDialog {
             }
         });
 
+        btnClone.setText("Clone");
+        btnClone.setEnabled(false);
+        btnClone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloneActionPerformed(evt);
+            }
+        });
+
+        btnCompare.setText("Compare");
+        btnCompare.setEnabled(false);
+        btnCompare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompareActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,17 +288,24 @@ public class MovieForm extends javax.swing.JDialog {
                     .addComponent(pnlDeclare, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClose))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSearch)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch)))
+                        .addComponent(btnSearch))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnClone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnUpdate)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnClose))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCompare)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -302,7 +327,11 @@ public class MovieForm extends javax.swing.JDialog {
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnClose))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClone)
+                    .addComponent(btnCompare))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -399,6 +428,8 @@ public class MovieForm extends javax.swing.JDialog {
         btnAdd.setEnabled(true);
         btnUpdate.setEnabled(true);
         btnDelete.setEnabled(true);
+        btnClone.setEnabled(true);
+        btnCompare.setEnabled(true);
     }//GEN-LAST:event_btnDeclareActionPerformed
 
     //creates record in list
@@ -539,10 +570,23 @@ public class MovieForm extends javax.swing.JDialog {
         
         tareaView.setText(record);
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnCloneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloneActionPerformed
+        myListCopy = myList.clone();
+        refreshView();
+    }//GEN-LAST:event_btnCloneActionPerformed
+
+    private void btnCompareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompareActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompareActionPerformed
     
     //refreshes the text area's text
     private void refreshView() {
         tareaView.setText(myList.printMovieList());
+        if (myListCopy != null) {
+            tareaView.append("****COPY BELOW***\n");
+            tareaView.append(myListCopy.printMovieList());
+        }          
     }
     
     /**
@@ -589,10 +633,13 @@ public class MovieForm extends javax.swing.JDialog {
     
     //non-generated variables
     private MovieList myList;
+    private MovieList myListCopy;
     private int recordTracker = 1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClone;
     private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnCompare;
     private javax.swing.JButton btnDeclare;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLeft;
