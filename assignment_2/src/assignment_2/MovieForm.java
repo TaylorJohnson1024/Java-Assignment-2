@@ -5,6 +5,8 @@
  */
 package assignment_2;
 
+import java.util.Collections;
+
 /**
  *
  * @author Taylor Johnson
@@ -269,7 +271,7 @@ public class MovieForm extends javax.swing.JDialog {
             }
         });
 
-        btnCompare.setText("Compare");
+        btnCompare.setText("Sort");
         btnCompare.setEnabled(false);
         btnCompare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,7 +579,8 @@ public class MovieForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCloneActionPerformed
 
     private void btnCompareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompareActionPerformed
-        // TODO add your handling code here:
+        myList.sortByName();
+        refreshView();
     }//GEN-LAST:event_btnCompareActionPerformed
     
     //refreshes the text area's text

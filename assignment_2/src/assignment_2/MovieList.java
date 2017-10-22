@@ -1,4 +1,7 @@
 package assignment_2;
+
+import java.util.Arrays;
+
 /**
  *
  * @author Taylor Johnson
@@ -11,7 +14,7 @@ package assignment_2;
  * 
  * Specific reference is Example_1
  */
-public class MovieList implements Cloneable {
+public class MovieList implements Cloneable{
     private Movie[] movie;
     private int numOfMovies = 0;
     private int movieArrayIndex = 0;
@@ -55,7 +58,6 @@ public class MovieList implements Cloneable {
      * @param initialListCapacity Capacity of movieList
      */
     public MovieList(int initialListCapacity) {
-        //copied and modified from example_1
 
         movie = new Movie[initialListCapacity];	
         
@@ -360,7 +362,13 @@ public class MovieList implements Cloneable {
         return movie[index].getMovieFormat();
     }
     
+    //testing
+    public void sortByName() {
+        Arrays.sort(movie);
+    }
     
+    
+    @Override
     public MovieList clone() {	
         try {
             MovieList copy = (MovieList) super.clone();
@@ -371,4 +379,5 @@ public class MovieList implements Cloneable {
             throw new RuntimeException("This class does not implement Clonable");
         }
     }
+    
 }

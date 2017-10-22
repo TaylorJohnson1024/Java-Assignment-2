@@ -425,7 +425,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCompare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Compare"/>
+        <Property name="text" type="java.lang.String" value="Sort"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>

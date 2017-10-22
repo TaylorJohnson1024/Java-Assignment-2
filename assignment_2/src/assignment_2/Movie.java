@@ -5,7 +5,7 @@ package assignment_2;
  * @author Taylor Johnson
  * date - 10/17/17
  */
-public class Movie {
+public class Movie implements Comparable<Movie>{
     private String movieName;
     private String movieRating;
     private int movieRuntime;
@@ -171,5 +171,10 @@ public class Movie {
     public void setMovieFormat(String newMovieFormat)
     {
         movieFormat = newMovieFormat;
+    }
+    
+    @Override
+    public int compareTo(Movie other){
+        return this.movieName.compareTo(other.getMovieName());
     }
 }
