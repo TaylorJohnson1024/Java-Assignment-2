@@ -1,7 +1,7 @@
 package assignment_2;
 
 import java.util.Arrays;
-
+import java.util.Iterator;
 /**
  *
  * @author Taylor Johnson
@@ -234,6 +234,7 @@ public class MovieList implements Cloneable{
      * MovieList Movie value titles on 
      * the first row and the MovieList 
      * Movie values on each subsequent line.
+     * Uses Iterator interface to get values.
      * 
      * Ref Mathew N - Example_1.
      * 
@@ -243,8 +244,20 @@ public class MovieList implements Cloneable{
      * @return log
      */
     public String printMovieList() {
-        String log;
-        log = String.format("MOVIE_NAME%1$-25s\tRATING%1$-15s\tYEAR%1$-15s\tRUNTIME%1$-15s\tFORMAT%1$-15s\n\r", "");
+        String log = "MOVIE_NAME\tRATING\tYEAR\tRUNTIME\tFORMAT\n\r";
+        Iterator<Movie> itr = Arrays.asList(movie).iterator();
+        
+        while (itr.hasNext()) {
+            Movie element = itr.next();
+            log += element.getMovieName() + "\t";
+            log += element.getMovieRating() + "\t";
+            log += element.getMovieReleaseYear() + "\t";
+            log += element.getMovieRuntime() + "\t";
+            log += element.getMovieFormat() + "\n";
+        }
+        
+        //Legacy Code, used for documenting purposes
+        /*log = String.format("MOVIE_NAME%1$-25s\tRATING%1$-15s\tYEAR%1$-15s\tRUNTIME%1$-15s\tFORMAT%1$-15s\n\r", "");
         
         for(int index = 0; index < numOfMovies; index++) {
             String add = String.format(movie[index].getMovieName() + "%1$-15s\t"
@@ -253,7 +266,7 @@ public class MovieList implements Cloneable{
                     + movie[index].getMovieRuntime() + "%1$-15s\t"
                     + movie[index].getMovieFormat() + "%1$-15s\n", "");
             log += add;
-        }
+        }*/
         return log;
     }
     
@@ -305,6 +318,7 @@ public class MovieList implements Cloneable{
     public String getMovieListMovieName(int index) {
         return movie[index].getMovieName();
     }
+    
     /**
      * Returns the MovieRating value
      * from the Movie object within
@@ -319,6 +333,7 @@ public class MovieList implements Cloneable{
     public String getMovieListMovieRating(int index) {
         return movie[index].getMovieRating();
     }
+    
     /**
      * Returns the MovieReleaseYear value
      * from the Movie object within
@@ -333,6 +348,7 @@ public class MovieList implements Cloneable{
     public int getMovieListMovieReleaseYear(int index) {
         return movie[index].getMovieReleaseYear();
     }
+    
     /**
      * Returns the MovieRuntime value
      * from the Movie object within
@@ -347,6 +363,7 @@ public class MovieList implements Cloneable{
     public int getMovieListMovieRuntime(int index) {
         return movie[index].getMovieRuntime();
     }
+    
     /**
      * Returns the MovieFormat value
      * from the Movie object within
@@ -362,12 +379,20 @@ public class MovieList implements Cloneable{
         return movie[index].getMovieFormat();
     }
     
-    //testing
+    /**
+     * Sorts Movie objects in MovieList object
+     * from descending order.
+     */
     public void sortByName() {
         Arrays.sort(movie);
     }
     
-    
+    /**
+     * Used to create a clone of the 
+     * MovieList object.
+     * 
+     * @return clone copy 
+     */
     @Override
     public MovieList clone() {	
         try {
@@ -379,5 +404,4 @@ public class MovieList implements Cloneable{
             throw new RuntimeException("This class does not implement Clonable");
         }
     }
-    
 }

@@ -5,8 +5,6 @@
  */
 package assignment_2;
 
-import java.util.Collections;
-
 /**
  *
  * @author Taylor Johnson

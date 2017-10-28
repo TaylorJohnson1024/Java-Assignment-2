@@ -34,6 +34,7 @@ public class Movie implements Comparable<Movie>{
         movieRuntime = 0;
         movieFormat = "";
     }
+    
     /**
      * Creates a movie object.
      * Object has five properties:
@@ -71,6 +72,7 @@ public class Movie implements Comparable<Movie>{
     {
         return this.movieName;
     }
+    
     /**
      * Returns the rating value
      * from a Movie object
@@ -82,6 +84,7 @@ public class Movie implements Comparable<Movie>{
     {
         return this.movieRating;
     }
+    
     /**
      * Returns the year value
      * from a Movie object
@@ -93,6 +96,7 @@ public class Movie implements Comparable<Movie>{
     {
         return this.movieReleaseYear;
     }
+    
     /**
      * Returns the runtime value
      * from a Movie object
@@ -104,6 +108,7 @@ public class Movie implements Comparable<Movie>{
     {
         return this.movieRuntime;
     }
+    
     /**
      * Returns the format value
      * from a Movie object
@@ -128,6 +133,7 @@ public class Movie implements Comparable<Movie>{
     {
         movieName = newMovieName;
     }
+    
     /**
      * Sets the rating value
      * of a Movie object
@@ -139,6 +145,7 @@ public class Movie implements Comparable<Movie>{
     {
         movieRating = newMovieRating;
     }
+    
     /**
      * Sets the year value
      * of a Movie object
@@ -150,6 +157,7 @@ public class Movie implements Comparable<Movie>{
     {
         movieReleaseYear = newMovieReleaseYear;
     }
+    
     /**
      * Sets the runtime value
      * of a Movie object
@@ -161,6 +169,7 @@ public class Movie implements Comparable<Movie>{
     {
         movieRuntime = newRuntime;
     }
+    
     /**
      * Sets the format value
      * of a Movie object
@@ -173,6 +182,14 @@ public class Movie implements Comparable<Movie>{
         movieFormat = newMovieFormat;
     }
     
+    /**
+     * Implementation of the comparable method
+     * for Movie class. Supposed to be used through
+     * MovieList class.
+     * 
+     * @param other refers to "other" movie name for comparison
+     * @return comparisons of Movie properties to one another in int format
+     */
     @Override
     public int compareTo(Movie other){
         return this.movieName.compareTo(other.getMovieName());
